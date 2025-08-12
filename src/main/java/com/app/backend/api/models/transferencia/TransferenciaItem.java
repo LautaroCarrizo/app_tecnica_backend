@@ -33,11 +33,10 @@ public class TransferenciaItem {
             foreignKey = @ForeignKey(name = "fk_transferitem_equipment"))
     private Equipo equipment;
 
-    // Timestamps opcionales por ítem (útiles si alguna vez aceptás parcialmente)
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
-    private Instant acceptedAt; // se completa al aceptar la transferencia
+    private Instant acceptedAt;
 
     @PrePersist
     void prePersist() {
