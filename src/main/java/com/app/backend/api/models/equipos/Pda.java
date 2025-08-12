@@ -1,19 +1,18 @@
 package com.app.backend.api.models.equipos;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Entity
-@Table(name = "celus")
-@DiscriminatorValue("CELU")
+@Table(name = "pdas")
+@DiscriminatorValue("PDA")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Celus extends Equipo {
+public class Pda {
 
     @NotBlank
     @Size(max = 40)

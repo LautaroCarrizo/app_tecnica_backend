@@ -1,15 +1,17 @@
 package com.app.backend.api.models.equipos;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "pockets")
-@DiscriminatorValue("POCKET")
+@Table(name = "handies")
+@DiscriminatorValue("HANDIE")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PrintPocket extends Equipo {
+public class Handie extends Equipo {
+    // sin campos extra en tu JS
 }
