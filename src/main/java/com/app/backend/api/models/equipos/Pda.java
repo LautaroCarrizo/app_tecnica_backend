@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Pda {
+public class Pda extends Equipo {
 
     @NotBlank
     @Size(max = 40)

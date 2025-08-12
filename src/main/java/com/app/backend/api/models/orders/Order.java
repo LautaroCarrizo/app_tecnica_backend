@@ -55,12 +55,12 @@ public class Order {
 
 
     @Size(max = 80)
-    @Column(name = "nombre_productor", length = 80)
-    private String nombreProductor;
+    @Column(name = "external_receiver_name", length = 80)
+    private String externalReceiverName;
 
     @Size(max = 20)
-    @Column(name = "dni_productor", length = 20)
-    private String dniProductor;
+    @Column(name = "external_receiver_dni", length = 20)
+    private String externalReceiverDni;
 
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)

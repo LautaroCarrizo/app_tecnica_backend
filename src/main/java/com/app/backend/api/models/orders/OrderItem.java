@@ -12,11 +12,16 @@ import java.time.Instant;
 @Table(name = "order_items",
         uniqueConstraints = @UniqueConstraint(
                 name = "uk_order_equipment",
-                columnNames = {"order_id","equipment_id"}))
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+                columnNames = {"order_id", "equipment_id"}))
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class OrderItem {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(optional = false)
