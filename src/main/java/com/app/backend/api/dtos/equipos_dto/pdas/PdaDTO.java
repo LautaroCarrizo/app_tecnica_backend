@@ -1,4 +1,4 @@
-package com.app.backend.api.dtos.equipos_dto.complementarios;
+package com.app.backend.api.dtos.equipos_dto.pdas;
 
 import com.app.backend.api.models.enums.EquipoEstado;
 import lombok.Getter;
