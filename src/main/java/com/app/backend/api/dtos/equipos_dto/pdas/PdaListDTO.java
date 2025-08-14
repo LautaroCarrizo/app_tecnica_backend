@@ -1,7 +1,6 @@
 package com.app.backend.api.dtos.equipos_dto.pdas;
 
 
-import com.app.backend.api.dtos.equipos_dto.complementarios.PdaDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
