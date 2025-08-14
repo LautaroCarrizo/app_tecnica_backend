@@ -13,7 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Celus extends Equipo {
+public class Celu extends Equipo {
 
     @NotBlank
     @Size(max = 40)
