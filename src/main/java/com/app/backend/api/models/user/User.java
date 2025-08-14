@@ -51,7 +51,7 @@ public class User {
     private List<Equipo> equipos = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
-    private List<Celus> celus = new ArrayList<>();
+    private List<Celu> celus = new ArrayList<>();
     @OneToMany(mappedBy = "user")
     private List<Pda> pdas = new ArrayList<>();
     @OneToMany(mappedBy = "user")
