@@ -11,7 +11,7 @@ import com.app.backend.api.models.orders.Order;
 import com.app.backend.api.models.orders.OrderItem;
 import com.app.backend.api.models.transferencia.Transferencia;
 import com.app.backend.api.models.transferencia.TransferenciaItem;
-import com.app.backend.api.models.user.User; // ⬅️ ajustá si tu clase real se llama Usuario
+import com.app.backend.api.models.user.User; // Ajustá si tu clase es Usuario
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -27,15 +27,15 @@ public class ModelMapperConfig {
     public ModelMapper modelMapper() {
         ModelMapper mm = new ModelMapper();
 
-        // 1) Config global: matching estricto y acceso a campos
+        // Config global: usá el nombre totalmente calificado para evitar choque con @Configuration de Spring
         mm.getConfiguration()
                 .setFieldMatchingEnabled(true)
-                .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE)
+                .setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PRIVATE)
                 .setMatchingStrategy(MatchingStrategies.STRICT);
 
-        // 2) Converters reusables
+        // ---- Converters ----
 
-        // Equipo -> EquipoRefDTO (resumen liviano para items)
+        // Equipo -> EquipoRefDTO
         Converter<Equipo, EquipoRefDTO> equipoToRef = ctx -> {
             Equipo e = ctx.getSource();
             if (e == null) return null;
@@ -43,12 +43,15 @@ public class ModelMapperConfig {
             ref.setId(e.getId());
             ref.setEstado(e.getEstado());
             String type = e.getClass().getSimpleName().toUpperCase();
-            ref.setType(type);
+            // Si tu DTO usa 'type':
+            ref.setTipo(type);
+            // Si tu DTO usa 'tipo', usa esta línea en su lugar y borra la de arriba:
+            // ref.setTipo(type);
             ref.setLabel(type + " #" + e.getId());
             return ref;
         };
 
-        // User -> UserRefDTO (para Transferencia.from/to)
+        // User -> UserRefDTO
         Converter<User, UserRefDTO> userToRef = ctx -> {
             User u = ctx.getSource();
             if (u == null) return null;
@@ -59,21 +62,21 @@ public class ModelMapperConfig {
             return ref;
         };
 
-        // 3) TypeMaps
+        // ---- TypeMaps ----
 
-        // OrderItem -> OrderItemDetailDTO (inyecta equipmentRef)
+        // OrderItem -> OrderItemDetailDTO (inyecta equipo ref)
         mm.typeMap(OrderItem.class, OrderItemDetailDTO.class)
                 .addMappings(m -> m.using(equipoToRef)
                         .map(OrderItem::getEquipment, OrderItemDetailDTO::setEquipment));
 
         // Order -> OrderDetailDTO
-        // - mapear user.id -> userId
-        // - mapear items usando el typeMap de arriba (postConverter)
         mm.typeMap(Order.class, OrderDetailDTO.class)
                 .addMappings(m -> {
+                    // user.id -> userId (nombre distinto)
                     m.map(src -> (src.getUser() != null ? src.getUser().getId() : null),
                             OrderDetailDTO::setUserId);
-                    m.skip(OrderDetailDTO::setItems); // se arma abajo
+                    // items se arma en postConverter para aplicar el typeMap de cada item
+                    m.skip(OrderDetailDTO::setItems);
                 })
                 .setPostConverter(ctx -> {
                     Order src = ctx.getSource();
@@ -86,14 +89,12 @@ public class ModelMapperConfig {
                     return dst;
                 });
 
-        // TransferenciaItem -> TransferenciaItemDetailDTO (inyecta equipmentRef)
+        // TransferenciaItem -> TransferenciaItemDetailDTO (inyecta equipo ref)
         mm.typeMap(TransferenciaItem.class, TransferenciaItemDetailDTO.class)
                 .addMappings(m -> m.using(equipoToRef)
                         .map(TransferenciaItem::getEquipment, TransferenciaItemDetailDTO::setEquipment));
 
         // Transferencia -> TransferenciaDetailDTO
-        // - fromUser/toUser a UserRefDTO con converter
-        // - items usando el typeMap anterior
         mm.typeMap(Transferencia.class, TransferenciaDetailDTO.class)
                 .addMappings(m -> {
                     m.using(userToRef).map(Transferencia::getFromUser, TransferenciaDetailDTO::setFromUser);
