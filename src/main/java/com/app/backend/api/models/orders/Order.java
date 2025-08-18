@@ -64,6 +64,7 @@ public class Order {
 
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<OrderItem> items = new ArrayList<>();
 
     @Column(nullable = false, updatable = false)
