@@ -19,6 +19,7 @@ import com.app.backend.api.repository.*;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
@@ -30,11 +31,15 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class OrderServicieImp implements OrderServicie {
-
+    @Autowired
     private final OrdersRepository order_repo;
+    @Autowired
     private final OrderItemRepository order_item_repo;
+    @Autowired
     private final UserRepository user_repo;
+    @Autowired
     private final EquipoRepository equipo_repo;
+    @Autowired
     private final ModelMapper modelMapper;
 
     // Provisorio: usuario "Técnica" (dueño del stock)
