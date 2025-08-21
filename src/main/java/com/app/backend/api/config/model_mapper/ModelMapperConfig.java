@@ -11,7 +11,7 @@ import com.app.backend.api.models.orders.Order;
 import com.app.backend.api.models.orders.OrderItem;
 import com.app.backend.api.models.transferencia.Transferencia;
 import com.app.backend.api.models.transferencia.TransferenciaItem;
-import com.app.backend.api.models.user.User; // Ajustá si tu clase es Usuario
+import com.app.backend.api.models.user.User;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
