@@ -2,7 +2,7 @@ package com.app.backend.api.dtos.orders_dto;
 
 import com.app.backend.api.models.enums.OrderItemEstado;
 import lombok.*;
-import com.app.backend.api.dtos.equipos_dto.EquipoRefDTO;
+import com.app.backend.api.dtos.equipments_dto.EquipoRefDTO;
 import java.time.Instant;
 
 @Getter

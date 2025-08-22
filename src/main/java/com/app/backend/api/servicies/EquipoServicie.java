@@ -1,20 +1,20 @@
 package com.app.backend.api.servicies;
 
-import com.app.backend.api.dtos.equipos_dto.EquipoRefDTO;
-import com.app.backend.api.dtos.equipos_dto.celus.CeluDTO;
-import com.app.backend.api.dtos.equipos_dto.celus.CeluListDTO;
-import com.app.backend.api.dtos.equipos_dto.complementarios.ComplementoDTO;
-import com.app.backend.api.dtos.equipos_dto.complementarios.ComplementoListDTO;
-import com.app.backend.api.dtos.equipos_dto.handies.HandieDTO;
-import com.app.backend.api.dtos.equipos_dto.handies.HandieListDTO;
-import com.app.backend.api.dtos.equipos_dto.hardticket.HardTicketDTO;
-import com.app.backend.api.dtos.equipos_dto.hardticket.HardTicketListDTO;
-import com.app.backend.api.dtos.equipos_dto.pcs.PcDTO;
-import com.app.backend.api.dtos.equipos_dto.pcs.PcListDTO;
-import com.app.backend.api.dtos.equipos_dto.pdas.PdaDTO;
-import com.app.backend.api.dtos.equipos_dto.pdas.PdaListDTO;
-import com.app.backend.api.dtos.equipos_dto.pocket.PocketDTO;
-import com.app.backend.api.dtos.equipos_dto.pocket.PocketListDTO;
+import com.app.backend.api.dtos.equipments_dto.EquipoRefDTO;
+import com.app.backend.api.dtos.equipments_dto.celus.CeluDTO;
+import com.app.backend.api.dtos.equipments_dto.celus.CeluListDTO;
+import com.app.backend.api.dtos.equipments_dto.complementarios.ComplementoDTO;
+import com.app.backend.api.dtos.equipments_dto.complementarios.ComplementoListDTO;
+import com.app.backend.api.dtos.equipments_dto.handies.HandieDTO;
+import com.app.backend.api.dtos.equipments_dto.handies.HandieListDTO;
+import com.app.backend.api.dtos.equipments_dto.hardticket.HardTicketDTO;
+import com.app.backend.api.dtos.equipments_dto.hardticket.HardTicketListDTO;
+import com.app.backend.api.dtos.equipments_dto.pcs.PcDTO;
+import com.app.backend.api.dtos.equipments_dto.pcs.PcListDTO;
+import com.app.backend.api.dtos.equipments_dto.pdas.PdaDTO;
+import com.app.backend.api.dtos.equipments_dto.pdas.PdaListDTO;
+import com.app.backend.api.dtos.equipments_dto.pocket.PocketDTO;
+import com.app.backend.api.dtos.equipments_dto.pocket.PocketListDTO;
 import com.app.backend.api.models.enums.EquipoEstado;
 
 import java.util.List;
