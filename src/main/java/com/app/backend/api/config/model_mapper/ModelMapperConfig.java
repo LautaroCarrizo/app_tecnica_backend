@@ -1,6 +1,6 @@
 package com.app.backend.api.config.model_mapper;
 
-import com.app.backend.api.dtos.equipos_dto.EquipoRefDTO;
+import com.app.backend.api.dtos.equipments_dto.EquipoRefDTO;
 import com.app.backend.api.dtos.orders_dto.OrderDetailDTO;
 import com.app.backend.api.dtos.orders_dto.OrderItemDetailDTO;
 import com.app.backend.api.dtos.transferencia_dto.TransferenciaDetailDTO;
