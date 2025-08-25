@@ -1,7 +1,7 @@
 package com.app.backend.api.models.user;
 
+import com.app.backend.api.models.equipos.Equipment;
 import com.app.backend.api.models.enums.RolUser;
-import com.app.backend.api.models.equipos.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -11,14 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "users", uniqueConstraints = {
-        @UniqueConstraint(name = "uk_users_email", columnNames = "email")
-})
+@Table(
+        name = "users",
+        uniqueConstraints = @UniqueConstraint(name = "uk_user_email", columnNames = "email"),
+        indexes = @Index(name = "idx_user_email", columnList = "email")
+)
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode(of = "id")
 public class User {
 
     @Id
@@ -36,34 +39,21 @@ public class User {
     @Column(nullable = false, length = 120)
     private String email;
 
+    @NotBlank
+    @Size(min = 60, max = 255) // BCrypt ~60 chars; dejamos margen
     @Column(name = "password_hash", nullable = false, length = 255)
     private String passwordHash;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 20)
     private RolUser role;
 
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
-
-
-    @OneToMany(mappedBy = "user")
-    private List<Equipo> equipos = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user")
-    private List<Celu> celus = new ArrayList<>();
-    @OneToMany(mappedBy = "user")
-    private List<Pda> pdas = new ArrayList<>();
-    @OneToMany(mappedBy = "user")
-    private List<Pc> pcs = new ArrayList<>();
-    @OneToMany(mappedBy = "user")
-    private List<Handie> handies = new ArrayList<>();
-    @OneToMany(mappedBy = "user")
-    private List<PrintPocket> pockets = new ArrayList<>();
-    @OneToMany(mappedBy = "user")
-    private List<PrintHardTicket> hardTickets = new ArrayList<>();
-    @OneToMany(mappedBy = "user")
-    private List<Complementarios> complementos = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @Builder.Default
+    private List<Equipment> equipos = new ArrayList<>();
 
     @PrePersist
     void prePersist() {
@@ -71,4 +61,10 @@ public class User {
         if (email != null) email = email.toLowerCase().trim();
         if (role == null) role = RolUser.USER;
     }
+
+    @PreUpdate
+    void preUpdate() {
+        if (email != null) email = email.toLowerCase().trim();
+    }
 }
+

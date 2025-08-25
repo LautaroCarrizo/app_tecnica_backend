@@ -1,12 +1,12 @@
 package com.app.backend.api.config.model_mapper;
 
-import com.app.backend.api.dtos.equipments_dto.EquipoRefDTO;
+import com.app.backend.api.dtos.equipments_dto.EquipmentRefDTO;
 import com.app.backend.api.dtos.orders_dto.OrderDetailDTO;
 import com.app.backend.api.dtos.orders_dto.OrderItemDetailDTO;
 import com.app.backend.api.dtos.transferencia_dto.TransferenciaDetailDTO;
 import com.app.backend.api.dtos.transferencia_dto.TransferenciaItemDetailDTO;
 import com.app.backend.api.dtos.user_dto.UserRefDTO;
-import com.app.backend.api.models.equipos.Equipo;
+import com.app.backend.api.models.equipos.Equipment;
 import com.app.backend.api.models.orders.Order;
 import com.app.backend.api.models.orders.OrderItem;
 import com.app.backend.api.models.transferencia.Transferencia;
@@ -36,21 +36,17 @@ public class ModelMapperConfig {
         // ---- Converters ----
 
         // Equipo -> EquipoRefDTO
-        Converter<Equipo, EquipoRefDTO> equipoToRef = ctx -> {
-            Equipo e = ctx.getSource();
+        Converter<Equipment, EquipmentRefDTO> equipmentToRef = ctx -> {
+            Equipment e = ctx.getSource();
             if (e == null) return null;
-            EquipoRefDTO ref = new EquipoRefDTO();
+            EquipmentRefDTO ref = new EquipmentRefDTO();
             ref.setId(e.getId());
             ref.setEstado(e.getEstado());
-            String type = e.getClass().getSimpleName().toUpperCase();
-            // Si tu DTO usa 'type':
-            ref.setTipo(type);
-            // Si tu DTO usa 'tipo', usa esta línea en su lugar y borra la de arriba:
-            // ref.setTipo(type);
-            ref.setLabel(type + " #" + e.getId());
+            String type = e.getKind().getTipo().name(); // PDA/CELU/...
+            ref.setType(type);
+            ref.setLabel(type + " " + e.getCode());     // "PDA PDA-015"
             return ref;
         };
-
         // User -> UserRefDTO
         Converter<User, UserRefDTO> userToRef = ctx -> {
             User u = ctx.getSource();
@@ -66,7 +62,7 @@ public class ModelMapperConfig {
 
         // OrderItem -> OrderItemDetailDTO (inyecta equipo ref)
         mm.typeMap(OrderItem.class, OrderItemDetailDTO.class)
-                .addMappings(m -> m.using(equipoToRef)
+                .addMappings(m -> m.using(equipmentToRef)
                         .map(OrderItem::getEquipment, OrderItemDetailDTO::setEquipment));
 
         // Order -> OrderDetailDTO
@@ -91,7 +87,7 @@ public class ModelMapperConfig {
 
         // TransferenciaItem -> TransferenciaItemDetailDTO (inyecta equipo ref)
         mm.typeMap(TransferenciaItem.class, TransferenciaItemDetailDTO.class)
-                .addMappings(m -> m.using(equipoToRef)
+                .addMappings(m -> m.using(equipmentToRef)
                         .map(TransferenciaItem::getEquipment, TransferenciaItemDetailDTO::setEquipment));
 
         // Transferencia -> TransferenciaDetailDTO
