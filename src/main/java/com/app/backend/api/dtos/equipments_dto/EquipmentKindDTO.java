@@ -10,8 +10,8 @@ import lombok.*;
 @Builder
 public class EquipmentKindDTO {
     private Long id;
-    private EquipoTipo tipo;   // PDA, CELU, PC, ...
-    private String modelo;     // p.ej. "Zebra TC25"
-    private String marca;      // opcional
-    private String notas;      // opcional
+    private EquipoTipo tipo;
+    private String modelo;
+    private String marca;
+    private String notas;    
 }

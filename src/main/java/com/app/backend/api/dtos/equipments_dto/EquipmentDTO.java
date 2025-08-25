@@ -10,17 +10,13 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class EquipmentDTO {
-    private Long id;                 // PK técnica
-    private String code;             // "PDA-015" (único)
-    private EquipoEstado estado;     // FUNCIONAL / NO_FUNCIONAL
-
-    private Long userId;             // custodia actual (Técnica/usuario)
-    private Long kindId;             // FK al catálogo
-
-    // Datos “levantados” del kind para facilitar al front:
-    private EquipoTipo tipo;         // PDA/CELU/...
-    private String modelo;           // "Zebra TC25"
-    private String marca;            // opcional
-
-    private String label;            // p.ej. "PDA PDA-015"
+    private Long id;
+    private String code;
+    private EquipoEstado estado;
+    private Long userId;
+    private Long kindId;
+    private EquipoTipo tipo;
+    private String modelo;
+    private String marca;
+    private String label;           
 }
