@@ -4,11 +4,11 @@ import com.app.backend.api.dtos.orders_dto.OrderCreateDTO;
 import com.app.backend.api.dtos.orders_dto.OrderDetailDTO;
 import com.app.backend.api.dtos.orders_dto.OrderListDTO;
 import com.app.backend.api.models.enums.*;
-import com.app.backend.api.models.equipos.Equipo;
+import com.app.backend.api.models.equipos.Equipment;
 import com.app.backend.api.models.orders.Order;
 import com.app.backend.api.models.orders.OrderItem;
 import com.app.backend.api.models.user.User;
-import com.app.backend.api.repository.equipos_repository.EquipoRepository;
+import com.app.backend.api.repository.equipmentRepository.EquipmentRepository;
 import com.app.backend.api.repository.orders.OrderItemRepository;
 import com.app.backend.api.repository.orders.OrdersRepository;
 import com.app.backend.api.repository.users.UserRepository;
@@ -22,7 +22,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.ModelMap;
+
 
 import java.time.Instant;
 import java.util.*;
@@ -38,7 +38,7 @@ public class OrderServicieImp implements OrderServicie {
     @Autowired
     private final UserRepository user_repo;
     @Autowired
-    private final EquipoRepository equipo_repo;
+    private final EquipmentRepository equipo_repo;
     @Autowired
     private final ModelMapper modelMapper;
 

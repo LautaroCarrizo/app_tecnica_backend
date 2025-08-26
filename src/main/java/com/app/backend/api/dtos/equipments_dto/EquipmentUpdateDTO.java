@@ -9,7 +9,6 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class EquipmentUpdateDTO {
-
     private String code;
     private EquipoEstado estado;
     private Long kindId;

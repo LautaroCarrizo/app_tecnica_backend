@@ -13,5 +13,5 @@ public class EquipmentKindDTO {
     private EquipoTipo tipo;
     private String modelo;
     private String marca;
-    private String notas;    
+    private String notas;
 }

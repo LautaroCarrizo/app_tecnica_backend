@@ -50,7 +50,7 @@ public class User {
 
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
-    
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     @Builder.Default
     private List<Equipment> equipos = new ArrayList<>();

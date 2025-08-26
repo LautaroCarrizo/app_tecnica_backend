@@ -2,7 +2,7 @@ package com.app.backend.api.models.orders;
 
 
 import com.app.backend.api.models.enums.OrderItemEstado;
-import com.app.backend.api.models.equipos.Equipo;
+import com.app.backend.api.models.equipos.Equipment;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,7 +32,7 @@ public class OrderItem {
     @ManyToOne(optional = false)
     @JoinColumn(name = "equipment_id", nullable = false,
             foreignKey = @ForeignKey(name = "fk_orderitem_equipment"))
-    private Equipo equipment;
+    private Equipment equipment;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 15)

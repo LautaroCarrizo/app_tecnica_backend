@@ -18,5 +18,5 @@ public class EquipmentDTO {
     private EquipoTipo tipo;
     private String modelo;
     private String marca;
-    private String label;           
+    private String label;
 }
