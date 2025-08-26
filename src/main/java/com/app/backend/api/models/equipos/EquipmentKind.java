@@ -9,7 +9,11 @@ import lombok.*;
 @Table(name = "equipment_kinds",
         uniqueConstraints = @UniqueConstraint(name = "uk_kind_tipo_modelo_marca",
                 columnNames = {"tipo", "modelo", "marca"}))
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class EquipmentKind {
 
     @Id
