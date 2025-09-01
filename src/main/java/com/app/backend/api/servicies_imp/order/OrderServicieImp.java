@@ -56,7 +56,7 @@ public class OrderServicieImp implements OrderServicie {
         Set<Long> uniqueItem = new HashSet<>();
         for (Long eqId : dto.getEquipmentIds()) {
             if (!uniqueItem.add(eqId)) continue;
-            Equipo eq = equipo_repo.findById(eqId).orElseThrow(() -> new EntityNotFoundException("Equipo id=" + eqId + " no existe"));
+            Equipment eq = equipo_repo.findById(eqId).orElseThrow(() -> new EntityNotFoundException("Equipo id=" + eqId + " no existe"));
             OrderItem item = OrderItem.builder().order(newOrder).equipment(eq).itemStatus(OrderItemEstado.SOLICITADO).createdAt(Instant.now()).build();
             order_item_repo.save(item);
             newOrder.getItems().add(item);
