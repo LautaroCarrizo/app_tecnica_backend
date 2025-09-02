@@ -15,7 +15,6 @@ import com.app.backend.api.repository.users.UserRepository;
 import com.app.backend.api.servicies.OrderServicie;
 import com.app.backend.api.models.enums.OrderEstado;
 import com.app.backend.api.models.enums.OrderDestino;
-import com.app.backend.api.repository.*;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -26,20 +25,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.*;
-import java.util.stream.Collectors;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class OrderServicieImp implements OrderServicie {
-    @Autowired
+
     private final OrdersRepository order_repo;
-    @Autowired
     private final OrderItemRepository order_item_repo;
-    @Autowired
     private final UserRepository user_repo;
-    @Autowired
     private final EquipmentRepository equipo_repo;
-    @Autowired
     private final ModelMapper modelMapper;
 
     // Provisorio: usuario "Técnica" (dueño del stock)
@@ -48,21 +42,21 @@ public class OrderServicieImp implements OrderServicie {
     @Override
     @Transactional
     public OrderDetailDTO crear(OrderCreateDTO dto) {
-        User userInterno = user_repo.findById(dto.getUserId()).orElseThrow(() -> new EntityNotFoundException("Usuario interno no encontrado"));
-        String productorNombre = dto.getDestination() == OrderDestino.PRODUCTOR ? dto.getExternalReceiverName() : null;
-        String productorDni = dto.getDestination() == OrderDestino.PRODUCTOR ? dto.getExternalReceiverDni() : null;
-        Order newOrder = Order.builder().responsibility(dto.getResponsibility()).event(dto.getEvent()).notes(dto.getNotes()).destination(dto.getDestination()).externalReceiverName(productorNombre).externalReceiverDni(productorDni).user(userInterno).state(OrderEstado.ABIERTA).createdAt(Instant.now()).build();
-        newOrder = order_repo.save(newOrder);
-        Set<Long> uniqueItem = new HashSet<>();
-        for (Long eqId : dto.getEquipmentIds()) {
-            if (!uniqueItem.add(eqId)) continue;
-            Equipment eq = equipo_repo.findById(eqId).orElseThrow(() -> new EntityNotFoundException("Equipo id=" + eqId + " no existe"));
-            OrderItem item = OrderItem.builder().order(newOrder).equipment(eq).itemStatus(OrderItemEstado.SOLICITADO).createdAt(Instant.now()).build();
-            order_item_repo.save(item);
-            newOrder.getItems().add(item);
-        }
-        return modelMapper.map(newOrder, OrderDetailDTO.class);
-
+//        User userInterno = user_repo.findById(dto.getUserId()).orElseThrow(() -> new EntityNotFoundException("Usuario interno no encontrado"));
+//        String productorNombre = dto.getDestination() == OrderDestino.PRODUCTOR ? dto.getExternalReceiverName() : null;
+//        String productorDni = dto.getDestination() == OrderDestino.PRODUCTOR ? dto.getExternalReceiverDni() : null;
+//        Order newOrder = Order.builder().responsibility(dto.getResponsibility()).event(dto.getEvent()).notes(dto.getNotes()).destination(dto.getDestination()).externalReceiverName(productorNombre).externalReceiverDni(productorDni).user(userInterno).state(OrderEstado.ABIERTA).createdAt(Instant.now()).build();
+//        newOrder = order_repo.save(newOrder);
+//        Set<Long> uniqueItem = new HashSet<>();
+//        for (Long eqId : dto.getEquipmentIds()) {
+//            if (!uniqueItem.add(eqId)) continue;
+//            Equipment eq = equipo_repo.findById(eqId).orElseThrow(() -> new EntityNotFoundException("Equipo id=" + eqId + " no existe"));
+//            OrderItem item = OrderItem.builder().order(newOrder).equipment(eq).itemStatus(OrderItemEstado.SOLICITADO).createdAt(Instant.now()).build();
+//            order_item_repo.save(item);
+//            newOrder.getItems().add(item);
+//        }
+//        return modelMapper.map(newOrder, OrderDetailDTO.class);
+        return null;
     }
 
     @Override

@@ -7,6 +7,7 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.time.Duration;
@@ -14,7 +15,7 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.UUID;
 
-@Component
+@Service
 @RequiredArgsConstructor
 public class JwtServicie {
     private final JwtProperties props;

@@ -1,7 +1,7 @@
 package com.app.backend.api.models.transferencia;
 
 
-import com.app.backend.api.models.equipos.Equipo;
+import com.app.backend.api.models.equipos.Equipment;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,7 +31,7 @@ public class TransferenciaItem {
     @ManyToOne(optional = false)
     @JoinColumn(name = "equipment_id", nullable = false,
             foreignKey = @ForeignKey(name = "fk_transferitem_equipment"))
-    private Equipo equipment;
+    private Equipment equipment;
 
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
