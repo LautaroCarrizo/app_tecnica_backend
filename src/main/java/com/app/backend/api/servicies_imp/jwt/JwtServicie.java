@@ -22,7 +22,7 @@ public class JwtServicie {
     // 1) Construye la clave HMAC a partir del secreto en Base64
     private Key key() {
         byte[] secretBytes = Decoders.BASE64.decode(props.getSecretBase64());
-        return Keys.hmacShaKeyFor(secretBytes); // HS256 requiere >= 256 bits
+        return Keys.hmacShaKeyFor(secretBytes);
     }
 
     // 2) Emite un Access Token con claims mínimos para tu app

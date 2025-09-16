@@ -1,4 +1,4 @@
 package com.app.backend.api.dtos.login;
 
-public class ExternalAuthResponse {
+public record ExternalAuthResponse (String token){
 }
