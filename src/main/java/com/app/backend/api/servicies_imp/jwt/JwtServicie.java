@@ -44,8 +44,12 @@ public class JwtServicie {
     }
 
     // 3) Valida la firma y restricciones estándar; si algo falla, lanza JwtException
-    public Jws<Claims> parseAndValidate(String token) throws JwtException {
-        return Jwts.parser().requireIssuer(props.getIssuer()).requireAudience(props.getAudience()).setSigningKey(key()).build().parseClaimsJws(token);
+    public Claims parseAndValidate(String token) {
+        return Jwts.parser()
+                .setSigningKey(key()) // tu método que arma la Key
+                .build()
+                .parseClaimsJws(token)
+                .getBody(); // esto es un Claims
     }
 
 

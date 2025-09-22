@@ -49,7 +49,7 @@ public class AuthService {
                         .externalUserId(profile.id())
                         .externalEnabled(profile.habilitado())
                         .externalBlocked(profile.bloqueado())
-                        .role(RolUser.USER) // por ahora todos USER; la política de ADMIN la aplicamos más adelante
+                        .role(RolUser.USER)
                         .build()));
 
         boolean dirty = false;
