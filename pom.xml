@@ -15,7 +15,9 @@
 	<artifactId>api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api</name>
-	<description>Sistema que automatiza el pedido, entrega y devolución de equipos, gestionando usuarios y dispositivos utilizados en eventos. Backend en Spring Boot con MySQL.</description>
+	<description>Sistema que automatiza el pedido, entrega y devolución de equipos, gestionando usuarios y dispositivos
+		utilizados en eventos. Backend en Spring Boot con MySQL.
+	</description>
 
 	<properties>
 		<java.version>21</java.version>
@@ -36,6 +38,20 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- Security -->
@@ -126,6 +142,10 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
 
 		<!-- Testing -->

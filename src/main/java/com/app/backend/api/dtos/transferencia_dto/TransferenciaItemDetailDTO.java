@@ -1,6 +1,6 @@
 package com.app.backend.api.dtos.transferencia_dto;
 
-import com.app.backend.api.dtos.equipments_dto.EquipoRefDTO;
+import com.app.backend.api.dtos.equipments_dto.EquipmentRefDTO;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,7 @@ import java.time.Instant;
 @NoArgsConstructor
 public class TransferenciaItemDetailDTO {
     private Long id;
-    private EquipoRefDTO equipment;
+    private EquipmentRefDTO equipment;
     private Instant createdAt;
     private Instant acceptedAt;
 }
