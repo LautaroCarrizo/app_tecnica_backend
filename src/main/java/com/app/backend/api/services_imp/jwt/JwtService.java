@@ -1,4 +1,4 @@
-package com.app.backend.api.servicies_imp.jwt;
+package com.app.backend.api.services_imp.jwt;
 
 
 import com.app.backend.api.config.jwt.JwtProperties;
@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class JwtServicie {
+public class JwtService {
     private final JwtProperties props;
 
     // 1) Construye la clave HMAC a partir del secreto en Base64

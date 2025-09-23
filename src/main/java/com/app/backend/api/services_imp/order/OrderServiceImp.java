@@ -1,24 +1,17 @@
-package com.app.backend.api.servicies_imp.order;
+package com.app.backend.api.services_imp.order;
 
 import com.app.backend.api.dtos.orders_dto.OrderCreateDTO;
 import com.app.backend.api.dtos.orders_dto.OrderDetailDTO;
 import com.app.backend.api.dtos.orders_dto.OrderListDTO;
-import com.app.backend.api.models.enums.*;
-import com.app.backend.api.models.equipos.Equipment;
-import com.app.backend.api.models.orders.Order;
-import com.app.backend.api.models.orders.OrderItem;
-import com.app.backend.api.models.user.User;
 import com.app.backend.api.repository.equipmentRepository.EquipmentRepository;
 import com.app.backend.api.repository.orders.OrderItemRepository;
 import com.app.backend.api.repository.orders.OrdersRepository;
 import com.app.backend.api.repository.users.UserRepository;
-import com.app.backend.api.servicies.OrderServicie;
+import com.app.backend.api.services.OrderService;
 import com.app.backend.api.models.enums.OrderEstado;
 import com.app.backend.api.models.enums.OrderDestino;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +21,7 @@ import java.util.*;
 
 @RequiredArgsConstructor
 @Service
-public class OrderServicieImp implements OrderServicie {
+public class OrderServiceImp implements OrderService {
 
     private final OrdersRepository order_repo;
     private final OrderItemRepository order_item_repo;

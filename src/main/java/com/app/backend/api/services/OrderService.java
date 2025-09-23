@@ -1,4 +1,4 @@
-package com.app.backend.api.servicies;
+package com.app.backend.api.services;
 import com.app.backend.api.dtos.orders_dto.*;
 import com.app.backend.api.models.enums.OrderDestino;
 import com.app.backend.api.models.enums.OrderEstado;
@@ -8,7 +8,7 @@ import java.time.Instant;
 import java.util.List;
 
 @Service
-public interface OrderServicie {
+public interface OrderService {
     /**
      * Crea una orden ABIERTA con ítems SOLICITADO (no mueve custodia todavía).
      */

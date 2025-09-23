@@ -1,4 +1,4 @@
-package com.app.backend.api.servicies;
+package com.app.backend.api.services;
 
 import com.app.backend.api.dtos.transferencia_dto.TransferenciaCreateDTO;
 import com.app.backend.api.dtos.transferencia_dto.TransferenciaDetailDTO;
@@ -8,7 +8,7 @@ import com.app.backend.api.models.enums.TransferenciaEstado;
 import java.time.Instant;
 import java.util.List;
 
-public interface TransferenciaServicie {
+public interface TransferenciaService {
 
     /**
      * Crea una transferencia PENDIENTE validando que los equipos estén hoy en custodia de fromUser.

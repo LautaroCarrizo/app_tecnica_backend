@@ -1,4 +1,4 @@
-package com.app.backend.api.servicies_imp.auth;
+package com.app.backend.api.services_imp.auth;
 
 import com.app.backend.api.config.jwt.externalAuth.PaseShowAuthClient;
 import com.app.backend.api.dtos.login.LoggerUserResponse;
@@ -6,7 +6,7 @@ import com.app.backend.api.models.enums.RolUser;
 import com.app.backend.api.models.user.User;
 import com.app.backend.api.repository.users.UserRepository;
 import com.app.backend.api.dtos.login.TokenResponseJwt;
-import com.app.backend.api.servicies_imp.jwt.JwtServicie;
+import com.app.backend.api.services_imp.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class AuthService {
 
     private final PaseShowAuthClient external;
     private final UserRepository users;
-    private final JwtServicie jwt;
+    private final JwtService jwt;
 
     @Transactional
     public TokenResponseJwt login(String dni, String password) {

@@ -1,4 +1,4 @@
-package com.app.backend.api.servicies;
+package com.app.backend.api.services;
 
 import com.app.backend.api.dtos.user_dto.UserDetailDTO;
 import com.app.backend.api.models.enums.RolUser;
@@ -6,7 +6,7 @@ import com.app.backend.api.models.enums.RolUser;
 import java.util.List;
 import java.util.Optional;
 
-public interface UserServicie {
+public interface UserService {
     /**
      * Alta de usuario (hashea password). Si no se indica rol, por defecto USER.
      */

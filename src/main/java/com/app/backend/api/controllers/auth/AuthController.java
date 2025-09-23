@@ -1,6 +1,6 @@
 package com.app.backend.api.controllers.auth;
 
-import com.app.backend.api.servicies_imp.auth.AuthService;
+import com.app.backend.api.services_imp.auth.AuthService;
 import com.app.backend.api.dtos.login.LoginRequest;
 import com.app.backend.api.dtos.login.TokenResponseJwt;
 import jakarta.validation.Valid;
