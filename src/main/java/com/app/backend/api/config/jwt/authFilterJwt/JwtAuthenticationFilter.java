@@ -1,7 +1,7 @@
 package com.app.backend.api.config.jwt.authFilterJwt;
 
 import com.app.backend.api.config.jwt.jsonAuth.JsonAuthEntryPoint;
-import com.app.backend.api.services_imp.jwt.JwtService;
+import com.app.backend.api.config.jwt.JwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
