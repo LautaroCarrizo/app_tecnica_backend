@@ -1,7 +1,6 @@
-package com.app.backend.api.services_imp.jwt;
+package com.app.backend.api.config.jwt;
 
 
-import com.app.backend.api.config.jwt.JwtProperties;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

@@ -3,7 +3,7 @@ package com.app.backend.api.config.spring_security;
 import com.app.backend.api.config.jwt.authFilterJwt.JwtAuthenticationFilter;
 import com.app.backend.api.config.jwt.jsonAuth.JsonAccessDeniedHandler;
 import com.app.backend.api.config.jwt.jsonAuth.JsonAuthEntryPoint;
-import com.app.backend.api.services_imp.jwt.JwtService;
+import com.app.backend.api.config.jwt.JwtService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
