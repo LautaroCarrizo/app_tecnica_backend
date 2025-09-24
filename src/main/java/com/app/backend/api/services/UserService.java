@@ -8,11 +8,6 @@ import java.util.Optional;
 
 public interface UserService {
     /**
-     * Alta de usuario (hashea password). Si no se indica rol, por defecto USER.
-     */
-    UserDetailDTO crear(UserDetailDTO dto);
-
-    /**
      * Devuelve detalle por id.
      */
     UserDetailDTO obtenerPorId(Long userId);
