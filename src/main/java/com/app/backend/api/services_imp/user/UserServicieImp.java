@@ -9,15 +9,9 @@ import java.util.Optional;
 
 public class UserServicieImp implements UserService {
     @Override
-    public UserDetailDTO crear(UserDetailDTO dto) {
-        return null;
-    }
-
-    @Override
     public UserDetailDTO obtenerPorId(Long userId) {
         return null;
     }
-
     @Override
     public Optional<UserDetailDTO> obtenerPorEmail(String email) {
         return Optional.empty();
@@ -35,9 +29,7 @@ public class UserServicieImp implements UserService {
     
     @Override
     public void eliminar(Long userId) {
-
     }
-
     @Override
     public long contarPorRol(RolUser role) {
         return 0;

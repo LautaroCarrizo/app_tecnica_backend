@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.security.core.Authentication;
 
 
 @RestController
@@ -20,7 +20,7 @@ public class AuthMeController {
     private final UserRepository users;
 
     @GetMapping("/me")
-    public ResponseEntity<MeResponse> me(org.springframework.security.core.Authentication auth) {
+    public ResponseEntity<MeResponse> me(Authentication auth) {
         // El filtro ya validó el JWT y dejó el principal en el SecurityContext
         String userId = (String) auth.getPrincipal(); // sub en el JWT (userId)
         User u = users.findById(Long.valueOf(userId))
